@@ -70,20 +70,14 @@
 
         .my-slider2 img:hover {
             transform: scale(1.1);
-            border:  solid  #EE4055  1px ;   
-
         }
         
         .my-slider3 img:hover {
             transform: scale(1.1);
-            border:  solid  #EE4055  1px ;   
-
         }
 
         .my-slider4 img:hover {
             transform: scale(1.1);
-            border:  solid  #EE4055  1px ;   
-
         }
 
         .slick-next,
@@ -262,7 +256,7 @@
 
             $('.my-slider2').slick({
                 slidesToShow: 5,
-                slidesToScroll: 1,
+                slidesToScroll:3,
                 arrows: true,
                 dots: false,
                 speed: 300,
@@ -290,7 +284,7 @@
             
             $('.my-slider3').slick({
                 slidesToShow: 5,
-                slidesToScroll: 1,
+                slidesToScroll:3,
                 arrows: true,
                 dots: false,
                 speed: 300,
@@ -317,7 +311,7 @@
             
             $('.my-slider4').slick({
                 slidesToShow: 5,
-                slidesToScroll: 1,
+                slidesToScroll: 3,
                 arrows: true,
                 dots: false,
                 speed: 300,

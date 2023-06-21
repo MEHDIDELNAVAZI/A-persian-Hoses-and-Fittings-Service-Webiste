@@ -202,10 +202,7 @@
             display: block;
             padding: 5px;
             text-decoration: none;
-
         }
-
-
 
         ul.menu {
             list-style-type: none;
@@ -248,7 +245,7 @@
             display: block !important;
         }
 
-      
+
 
         .burger_menue ul ul {
             display: none;
@@ -303,8 +300,6 @@
             padding-left: 5px;
         }
 
-
-
         @keyframes fade-in {
             from {
                 opacity: 0;
@@ -348,6 +343,35 @@
         /* Styles for laptops and desktops */
         @media (min-width: 1024px) {
             /* CSS rules for laptops and desktops */
+        }
+
+        /* Pagination links */
+        .pagination {
+            margin-top: 30px;
+            margin: auto;
+            width: auto;
+        }
+
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        /* Style the active/current link */
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        /* Add a grey background color on mouse-over */
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+        .container_pagination {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -543,9 +567,6 @@
             // Display the search results
             displayResults(results);
         });
-
-        
-
     </script>
 
     <script>
@@ -561,33 +582,33 @@
     <script>
         window.onscroll = function() {
             if (window.scrollY >= 70) {
-            $("nav").css("position", "fixed") ;
-            $("nav").css("top", "0px") ;
-            $("nav").css("right", "0px") ;
-            $(".nav2").css("position", "fixed") ;
-            $(".nav2").css("top", "0px") ;
-            $(".nav2").css("right", "0px") ;
-            $(".nav2").css("z-index", "3000") ;
+                $("nav").css("position", "fixed");
+                $("nav").css("top", "0px");
+                $("nav").css("right", "0px");
+                $(".nav2").css("position", "fixed");
+                $(".nav2").css("top", "0px");
+                $(".nav2").css("right", "0px");
+                $(".nav2").css("z-index", "3000");
 
-            $("nav").css("width", "100%") ;
-            $("nav").css("z-index", "3000") ;
-            }else{
-                $("nav").css("position", "relative") ;
-                $(".nav2").css("position", "relative") ;
+                $("nav").css("width", "100%");
+                $("nav").css("z-index", "3000");
+            } else {
+                $("nav").css("position", "relative");
+                $(".nav2").css("position", "relative");
             }
         };
     </script>
 
     <script>
-        $(".burger_menue ul li ").click(function () {
-        $(".burger_menue ul ul ").css("display" ,"block");
-        $(this).find("ul >ul").css("display","none");
+        $(".burger_menue ul li ").click(function() {
+            $(".burger_menue ul ul ").css("display", "block");
+            $(this).find("ul >ul").css("display", "none");
         })
 
-        $(".burger_menue ul ul li ").click(function () {
-            
-            $(this).find(">ul").css("display","block") ;
-            console.log($(this).find(">ul")) ;
+        $(".burger_menue ul ul li ").click(function() {
+
+            $(this).find(">ul").css("display", "block");
+            console.log($(this).find(">ul"));
         })
     </script>
 

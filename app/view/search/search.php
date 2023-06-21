@@ -1,4 +1,17 @@
 <?php
+$currentURL = "http";
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $currentURL .= "s";
+}
+
+$currentURL .= "://";
+
+if ($_SERVER['SERVER_PORT'] !== '80') {
+    $currentURL .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . urldecode($_SERVER['REQUEST_URI']);
+} else {
+    $currentURL .= $_SERVER['SERVER_NAME'] . urldecode($_SERVER['REQUEST_URI']);
+}
 
 use App\Model\products;
 use Core\View;
@@ -37,11 +50,12 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
         }
 
 
-         /* Styles for mobile devices */
-         @media (max-width: 767px) {
-           .pr img {
-           scale: 0.5;
-           }
+        /* Styles for mobile devices */
+        @media (max-width: 767px) {
+            .pr img {
+                scale: 0.5;
+            }
+
             /* CSS rules for mobile devices */
         }
 
@@ -85,7 +99,6 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                 <?php
                 echo ($category_name[0]);
                 ?>
-
             </span>
 
         <?php } ?>
@@ -93,44 +106,153 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
             <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap -m-4">
 
-
                     <?php
                     $products_len = count($input);
-                    if ($products_len > 0) {
-                        for ($i = 0; $i < $products_len; $i++) {
-                            $query = $mysqli->query("SELECT * FROM products WHERE p_id='$input[$i]'");
-                            $row = mysqli_fetch_assoc($query);
-                            $p_name = str_replace(" ", "-", $row['p_name']);
+                    $pagination_number = ceil($products_len / 8);
 
-
-                            echo  "<a class='a_pr' href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
-
-                            echo "  <div class='lg:w-1/4 md:w-1/2 p-4 w-full  pr' style='border:solid #DDDDDD 1px'>
-                                  <div class='block relative h-48 rounded overflow-hidden'>";
-                            echo  "<img alt='ecommerce' class='object-cover object-center w-full h-full block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
-                            echo " </div>
-                            <div class='mt-4'>";
-                            echo " <p class='mt-1'>" . $row['p_name'] . "</p>";
-                            echo  "</div>";
-                            echo "</a>";
-                            echo "</div>";
-                        }
-                    } else {
-                        echo " هیچ محصولی یافت نشد!  "  ;
+                    if (!isset($_GET['page'])) {
+                        $_GET['page'] = 1;
                     }
 
+                    if ($products_len > 0) {
+                        if ($_GET['page'] > 0  && $_GET['page'] <= $pagination_number) {
+                            if ($_GET['page'] == 1) {
+                                $start = 0;
+                            } else {
+                                $start = $_GET['page'] * 8 - 8;
+                            }
+                            for ($i = $start; $i < $start + 8; $i++) {
+                                if ($i >= count($input)) {
+                                    break;
+                                }
+                                $query = $mysqli->query("SELECT * FROM products WHERE p_id='$input[$i]'");
+                                $row = mysqli_fetch_assoc($query);
+                                $p_name = str_replace(" ", "-", $row['p_name']);
+                                echo  "<a class='a_pr' href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
+                                echo "  <div class='lg:w-1/4 md:w-1/2 p-4 w-full  pr' style='border:solid #DDDDDD 1px'>
+                                  <div class='block relative h-48 rounded overflow-hidden'>";
+                                echo  "<img alt='ecommerce' class='object-cover object-center w-full h-full block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                                echo " </div>
+                            <div class='mt-4'>";
+                                echo " <p class='mt-1'>" . $row['p_name'] . "</p>";
+                                echo  "</div>";
+                                echo "</a>";
+                                echo "</div>";
+                            }
+                        } else {
+                            echo " هیچ محصولی یافت نشد!  ";
+                        }
+                    } else {
+                        echo " هیچ محصولی یافت نشد!  ";
+                    }
                     ?>
                 </div>
-            </div>
         </section>
+        <div class="container_pagination">
+            <?php
+
+            if ($pagination_number > 0 && $_GET['page'] <= $pagination_number) {
+
+                echo '<div class="pagination">';
+                $parts = parse_url($currentURL);
+                // Reconstruct the URL without the query string for "page"
+                $newQuery = '';
+                parse_str($parts['query'], $query);
+                unset($query['page']);
+                if (!empty($query)) {
+                    $newQuery = '?' . http_build_query($query);
+                }
+                // Remove trailing slash from path
+                $newPath = rtrim($parts['path'], '/');
+                // Reconstruct the URL with the modified path and query string
+                $currentURL = $parts['scheme'] . '://' . $parts['host'] . $newPath . $newQuery;
+
+                if ($_GET['page'] > 1) {
+                    if (isset($_GET['s_f'])) {
+                        echo  "<a  href=" . $currentURL . "&?page=" . $_GET['page'] - 1 . ">&laquo;";
+                        echo  "</a>";
+                    } else {
+                        echo  "<a  href=" . $currentURL . "/?page=" . $_GET['page'] - 1 . ">&laquo;";
+                        echo  "</a>";
+                    }
+                }
+
+                for ($i = 0; $i < $pagination_number; $i++) {
+                    $parts = parse_url($currentURL);
+                    // Reconstruct the URL without the query string for "page"
+                    $newQuery = '';
+                    parse_str($parts['query'], $query);
+                    unset($query['page']);
+                    if (!empty($query)) {
+                        $newQuery = '?' . http_build_query($query);
+                    }
+                    // Remove trailing slash from path
+                    $newPath = rtrim($parts['path'], '/');
+                    // Reconstruct the URL with the modified path and query string
+                    $currentURL = $parts['scheme'] . '://' . $parts['host'] . $newPath . $newQuery;
+
+                    if (isset($_GET['page'])) {
+                        if ($pagination_number == 1) {
+                            if ($i == $_GET['page']) {
+                                if (isset($_GET['s_f'])) {
+                                    echo  "<a class='active' href=" . $currentURL . "&page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                } else {
+                                    echo  "<a class='active' href=" . $currentURL . "/?page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                }
+                            } else {
+                                if (isset($_GET['s_f'])) {
+                                    echo  "<a class='active'  href=" . $currentURL . "&page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                } else {
+                                    echo  "<a  class='active' href=" . $currentURL . "/?page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                }
+                            }
+                        } else {
+                            if ($i == $_GET['page'] - 1) {
+
+                                if (isset($_GET['s_f'])) {
+                                    echo  "<a class='active' href=" . $currentURL . "&page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                } else {
+                                    echo  "<a class='active' href=" . $currentURL . "/?page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                }
+                            } else {
+                                if (isset($_GET['s_f'])) {
+                                    echo  "<a  href=" . $currentURL . "&page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                } else {
+                                    echo  "<a  href=" . $currentURL . "/?page=" . $i + 1 . ">" . $i + 1;
+                                    echo  "</a>";
+                                }
+                            }
+                        }
+                    }
+                }
+                if ($_GET['page'] < $pagination_number) {
+                    if (isset($_GET['s_f'])) {
+                        echo  "<a  href=" . $currentURL . "&?page=" . $_GET['page'] + 1 . ">&raquo;";
+                        echo  "</a>";
+                    } else {
+                        echo  "<a  href=" . $currentURL . "/?page=" . $_GET['page'] + 1 . ">&raquo;";
+                        echo  "</a>";
+                    }
+                }
+            }
+
+
+            echo '</div>';
+
+            ?>
+        </div>
+    </div>
     </div>
     <?php
     View::render("app/view/main/footer.php");
     ?>
-
-
-
-
 </body>
 
 </html>

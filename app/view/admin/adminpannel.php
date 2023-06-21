@@ -910,7 +910,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             alert(response.message);
                             $(".table_midcat").load(" .table_midcat > *");
                             $("select").load(" select > *");
-
                         },
                         error: function(xhr, status, error) {
                             // Handle errors here

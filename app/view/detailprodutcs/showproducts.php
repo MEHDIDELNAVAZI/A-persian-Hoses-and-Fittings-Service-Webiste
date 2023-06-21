@@ -7,7 +7,6 @@ use Core\View;
 define("ROOT", dirname(__DIR__));
 include  ROOT."/app/view/main/header.php";
 
-
 $p_id = $input[0];
 $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
 ?>
@@ -142,8 +141,6 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
                 <div class="col-md-5">
                     <?php
                     include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
-
-
 
                     $row = mysqli_fetch_assoc($query);
                     echo ' <div class="geeks">';
