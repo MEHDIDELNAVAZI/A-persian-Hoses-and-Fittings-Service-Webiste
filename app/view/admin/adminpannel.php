@@ -243,6 +243,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     #added-tozihat-takmili-ul {
         list-style: none;
     }
+
+    .delete_pr_btn {
+        cursor: pointer;
+    }
 </style>
 
 <!-- message box   -->
@@ -327,7 +331,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
             <div class="section" id="section2">
                 <h2>Top Categories</h2>
                 <br>
-                <table class="table_topcat">
+                <table id="table_topcat">
                     <tr>
                         <th>#</th>
                         <th> Top_cat_name</th>
@@ -360,6 +364,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             echo $row["name"];
                             echo "</td>";
                             echo "<td class='action'>";
+                            echo  "<form action='post' id='delete_tcat'>";
+                            echo  '<input hidden   type="text"  name ="t_cat_id" value= "' . $row["id"] . '">';
+                            echo "<div class='btn btn-danger delete_tcat_btn'>";
+                            echo 'Delete';
+                            echo "</div>";
+                            echo "</form>";
                             echo "</td>";
                             echo "</tr>";
                             $counter++;
@@ -386,7 +396,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
             <div class="section" id="midcategory">
                 <h2>Mid Categories</h2>
                 <br>
-                <table class="table_midcat">
+                <table id="table_midcat">
                     <tr>
                         <th>#</th>
                         <th> Mid_cat_name</th>
@@ -428,6 +438,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             }
                             echo "</td>";
                             echo "<td class='action'>";
+                            echo  "<form action='post' id='delete_mcat'>";
+                            echo  '<input hidden   type="text"  name ="m_cat_id" value= "' . $row["midcat_id"] . '">';
+                            echo "<div class='btn btn-danger delete_mcat_btn'>";
+                            echo 'Delete';
+                            echo "</div>";
+                            echo "</form>";
                             echo "</td>";
                             echo "</tr>";
                             $counter++;
@@ -441,7 +457,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                 <h2>Add Mid Categories</h2>
                 <br>
                 <form method="post">
-                    <select name="midcategory" id="topcategory_selection" class="select_top">
+                    <select name="midcategory" id="topcategory_selection_mid" class="select_top">
                         <?php
                         include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                         $query = $mysqli->query("SELECT *FROM top_cat ");
@@ -470,7 +486,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
             <div class="section" id="endcategory">
                 <h2>End Categories</h2>
                 <br>
-                <table class="table_endcat">
+                <table id="table_endcat">
                     <tr>
                         <th>#</th>
                         <th> End_cat_name</th>
@@ -526,8 +542,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             echo "</td>";
 
 
-
                             echo "<td class='action'>";
+                            echo  "<form action='post' id='delete_ecat'>";
+                            echo  '<input hidden   type="text"  name ="e_cat_id" value= "' . $row["id"] . '">';
+                            echo "<div class='btn btn-danger delete_ecat_btn'>";
+                            echo 'Delete';
+                            echo "</div>";
+                            echo "</form>";
                             echo "</td>";
                             echo "</tr>";
                             $counter++;
@@ -571,20 +592,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
             <div class="section" id="products">
                 <h2>Products</h2>
                 <br>
-                <table class="table_endcat">
+                <table id="table_products">
                     <tr>
                         <th>#</th>
                         <th>Photo</th>
                         <th>Name</th>
-                        <th></th>
+                        <th>Category</th>
 
                         <th>Action </th>
                     </tr>
                     <?php
-                    $model  = new Model;
-                    $model("end_category");
-                    $query = $model->SELECT();
-                    $query = $model->Query_runner($query);
+                    $query = $mysqli->query("SELECT * FROM products");
                     if ($model->getrow($query) == 0) {
                         echo "<td>";
                         echo "There is not any fild !";
@@ -608,15 +626,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             echo "<td>";
                             echo  $counter;
                             echo "</td>";
+
+
+
                             echo "<td>";
-                            echo $row["ecat_name"];
+                            echo  "<img   width='120px ' height='120px' src=" . "/public/assets/uploaded_images/" . $row["photo"] . ">";
                             echo "</td>";
 
                             echo "<td>";
-                            $query2 = $mysqli->query("SELECT * FROM mcat_name WHERE midcat_id='$row[mctat_id]'");
-                            while ($row2 = mysqli_fetch_assoc($query2)) {
-                                echo $row2['mcat_name'];
-                            }
+                            echo $row['p_name'];
                             echo "</td>";
 
                             echo "<td>";
@@ -626,6 +644,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             }
                             echo "</td>";
                             echo "<td class='action'>";
+                            echo  "<form action='post' id='delete_product'>";
+                            echo  '<input hidden   type="text"  name ="p_id" value= "' . $row["p_id"] . '">';
+                            echo "<div class='btn btn-danger delete_pr_btn'>";
+                            echo 'Delete';
+                            echo "</div>";
+                            echo "</form>";
                             echo "</td>";
                             echo "</tr>";
                             $counter++;
@@ -635,6 +659,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                     ?>
                 </table>
                 <br>
+
 
                 <div class="producst container">
 
@@ -805,8 +830,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
             })
 
 
-
-
             $(".add-tozihat-takmili").click(function() {
                 var name = $(".name-takmili").val();
                 var content = $("#content-tozihat-takmili").val();
@@ -875,8 +898,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                         success: function(response) {
                             // Access the message property of the JSON object and display it to the user
                             alert(response.message);
-                            $(".table_topcat").load(" .table_topcat > *");
+                            $("#table_topcat").load(" #table_topcat > *");
                             $(".select_top").load(" .select_top > *");
+                            $("#topcategory_selection_end").load(" #topcategory_selection_end > *");
+                            $("#topcategory_selection_mid").load(" #topcategory_selection_mid > *");
+                            $("#t_cat_name").load(" #t_cat_name > *");
+                            $("#m_cat_name").load(" #m_cat_name > *");
+                            $("#E_cat_name").load(" #E_cat_name > *");
                         },
                         error: function(xhr, status, error) {
                             // Handle errors here
@@ -890,7 +918,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
         <script>
             $(".add_mid_cat").click(function() {
                 var mcat_name = $('#mcat_name').val();
-                var tcat_id = $("#topcategory_selection").val();
+                var tcat_id = $("#topcategory_selection_mid").val();
 
                 if (mcat_name == "") {
                     $(".midcategory_name_error").html("Enter value for mid_catgeory name !");
@@ -908,8 +936,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                         success: function(response) {
                             // Access the message property of the JSON object and display it to the user
                             alert(response.message);
-                            $(".table_midcat").load(" .table_midcat > *");
-                            $("select").load(" select > *");
+                            $("#table_midcat").load(" #table_midcat > *");
+                            $("#midcategory_selection_end").load(" #midcategory_selection_end > *");
+                            $("#t_cat_name").load(" #t_cat_name > *");
+                            $("#m_cat_name").load(" #m_cat_name > *");
+                            $("#E_cat_name").load(" #E_cat_name > *");
                         },
                         error: function(xhr, status, error) {
                             // Handle errors here
@@ -944,8 +975,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                         success: function(response) {
                             // Access the message property of the JSON object and display it to the user
                             alert(response.message);
-                            $(".table_endcat").load(" .table_endcat > *");
-                            $("select").load(" select > *");
+                            $("#table_endcat").load(" #table_endcat > *");
+                            $("#t_cat_name").load(" #t_cat_name > *");
+                            $("#m_cat_name").load(" #m_cat_name > *");
+                            $("#E_cat_name").load(" #E_cat_name > *");
 
                         },
                         error: function(xhr, status, error) {
@@ -1065,7 +1098,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                 var data = new FormData();
                 var files = $('#picture')[0].files;
                 var isavailble = $("#isavailble").val();
-                
+
 
                 if (product_name !== "" && description !== "") {
                     $(".txt1_error").html("");
@@ -1079,9 +1112,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                         data.append('isavailble', isavailble);
                         data.append('description', description);
                         data.append('product_name', product_name);
-                        data.append("tozihat" , JSON.stringify(tozihat),) ;
-                        data.append("tozihat_takmili" ,JSON.stringify(tozihat_takmili),) ;
-                        
+                        data.append("tozihat", JSON.stringify(tozihat), );
+                        data.append("tozihat_takmili", JSON.stringify(tozihat_takmili), );
+
                         $.ajax({
                             type: 'POST',
                             url: 'http://sky.test/ajax/main/addprodut',
@@ -1093,6 +1126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
                             success: function(response) {
                                 // Access the message property of the JSON object and display it to the user
                                 alert(response.message);
+                                $("#table_products").load(" #table_products > *");
                             },
                             error: function(xhr, status, error) {
                                 // Handle errors here
@@ -1121,6 +1155,130 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
         </script>
 
 
+        <script>
+            $('#table_products').on('click', '.delete_pr_btn', function() {
+                var p_id = $(this).parent().find("input").val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://sky.test/ajax/main/deleteproduct',
+                    data: {
+                        p_id: p_id
+                    },
+                    dataType: 'json', // Set the expected response type to JSON
+                    success: function(response) {
+                        // Access the message property of the JSON object and display it to the user
+                        $("#table_products").load(" #table_products > *");
+
+
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.log(error);
+                    }
+                });
+
+            })
+        </script>
+
+
+
+        <script>
+            $('#table_endcat').on('click', '.delete_ecat_btn', function() {
+                var ecat_id = $(this).parent().find("input").val();
+                console.log(ecat_id);
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://sky.test/ajax/main/deletecat',
+                    data: {
+                        ecat_id: ecat_id
+                    },
+                    dataType: 'json', // Set the expected response type to JSON
+                    success: function(response) {
+                        // Access the message property of the JSON object and display it to the user
+                        $("#table_endcat").load(" #table_endcat > *");
+                        $("#t_cat_name").load(" #t_cat_name > *");
+                        $("#m_cat_name").load(" #m_cat_name > *");
+                        $("#E_cat_name").load(" #E_cat_name > *");
+
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.log(error);
+                    }
+                });
+
+            })
+        </script>
+
+
+
+
+        <script>
+            $('#table_midcat').on('click', '.delete_mcat_btn', function() {
+                var mcat_id = $(this).parent().find("input").val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://sky.test/ajax/main/deletemcat',
+                    data: {
+                        mcat_id: mcat_id
+                    },
+                    dataType: 'json', // Set the expected response type to JSON
+                    success: function(response) {
+                        // Access the message property of the JSON object and display it to the user
+                        $("#table_midcat").load(" #table_midcat > *");
+                        $("#midcategory_selection_end").load(" #midcategory_selection_end > *");
+                        $("#t_cat_name").load(" #t_cat_name > *");
+                        $("#m_cat_name").load(" #m_cat_name > *");
+                        $("#E_cat_name").load(" #E_cat_name > *");
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.log(error);
+                    }
+                });
+
+            })
+        </script>
+
+
+
+        <script>
+            $('#table_topcat').on('click', '.delete_tcat_btn', function() {
+                var tcat_id = $(this).parent().find("input").val();
+                console.log(tcat_id);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://sky.test/ajax/main/deletetcat',
+                    data: {
+                        tcat_id: tcat_id
+                    },
+                    dataType: 'json', // Set the expected response type to JSON
+                    success: function(response) {
+                        // Access the message property of the JSON object and display it to the user
+                        $("#table_topcat").load(" #table_topcat > *");
+                        $("#topcategory_selection_end").load(" #topcategory_selection_end > *");
+                        $("#topcategory_selection_mid").load(" #topcategory_selection_mid > *");
+                        $("#t_cat_name").load(" #t_cat_name > *");
+                        $("#m_cat_name").load(" #m_cat_name > *");
+                        $("#E_cat_name").load(" #E_cat_name > *");
+
+
+
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.log(error);
+                    }
+                });
+
+            })
+        </script>
 
 </body>
 

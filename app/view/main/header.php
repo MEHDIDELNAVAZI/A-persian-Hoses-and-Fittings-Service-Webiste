@@ -332,6 +332,7 @@
                 line-height: 40px;
             }
 
+
             /* CSS rules for mobile devices */
         }
 
@@ -369,6 +370,7 @@
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+
         .container_pagination {
             display: flex;
             justify-content: center;
@@ -379,7 +381,7 @@
 <body>
 
     <div class="burger_menue">
-        <div class="close_menue" style="color:red"><img style="cursor: pointer;" width="20" height="20" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1" /></div>
+        <div class="close_menue" style="color:red;cursor:pointer"><i class='bx bx-expand'></i></div>
         <ul class="menu  mt-4  p-2" style="direction: rtl;">
             <li><a href="http://sky.test">صفحه اصلی</a></li>
             <li>
@@ -589,7 +591,6 @@
                 $(".nav2").css("top", "0px");
                 $(".nav2").css("right", "0px");
                 $(".nav2").css("z-index", "3000");
-
                 $("nav").css("width", "100%");
                 $("nav").css("z-index", "3000");
             } else {
@@ -606,7 +607,6 @@
         })
 
         $(".burger_menue ul ul li ").click(function() {
-
             $(this).find(">ul").css("display", "block");
             console.log($(this).find(">ul"));
         })

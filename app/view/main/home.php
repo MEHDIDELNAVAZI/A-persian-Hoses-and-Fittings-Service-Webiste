@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        
+
     </title>
     <style>
         body {
@@ -18,9 +18,8 @@
         }
 
         .wrapper a:hover {
-        text-decoration: none;
-        color:black;
-           
+            text-decoration: none;
+            color: black;
         }
 
 
@@ -41,7 +40,7 @@
             transition: transform 0.2s ease-in-out;
         }
 
-        
+
         .my-slider3 img {
             width: 100%;
             height: 200px;
@@ -51,7 +50,7 @@
             transition: transform 0.2s ease-in-out;
         }
 
-        
+
         .my-slider4 img {
             width: 100%;
             height: 200px;
@@ -71,7 +70,7 @@
         .my-slider2 img:hover {
             transform: scale(1.1);
         }
-        
+
         .my-slider3 img:hover {
             transform: scale(1.1);
         }
@@ -101,7 +100,7 @@
 
         .footer {
             background-color: #222222 !important;
-            margin-top: 100px ;
+            margin-top: 100px;
             color: white;
             height: auto;
             padding: 10px;
@@ -116,8 +115,22 @@
             background-color: #333;
             opacity: 0.8;
         }
+
         a:hover {
-        text-decoration: none;
+            text-decoration: none;
+        }
+
+        #scrollBtn {
+            display: none;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #EE384E;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -144,20 +157,20 @@
 
 
         <div class="wrapper" style="text-align: right;">
-        <div class="fotter_slider"  style="padding-right:20px" >انواع شلنگ</div>
+            <div class="fotter_slider" style="padding-right:20px">انواع شلنگ</div>
 
             <div class="my-slider2" style="height: 300px;text-align:center">
                 <?php
-                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php" ;
-                $query  =$mysqli->query("SELECT * FROM products WHERE  tcat_id=10") ;
-                while ($row =mysqli_fetch_assoc($query)) {
+                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+                $query  = $mysqli->query("SELECT * FROM products WHERE  tcat_id=10");
+                while ($row = mysqli_fetch_assoc($query)) {
                     $p_name = str_replace(" ", "-", $row['p_name']);
-                    echo "<a  href='http://sky.test/product/".$row['p_id']."/".$p_name. "'>" ;
-                echo  "<div>"   ;  
-                echo  " <img   alt=''  src='/public/assets/uploaded_images/".$row['photo']."'>" ;
-                echo   "<div style='color:black;padding:10px'>" . $row['p_name']. "</div>"  ;
-                echo "</div>" ;
-                echo "</a>" ;
+                    echo "<a  href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
+                    echo  "<div>";
+                    echo  " <img   alt=''  src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                    echo   "<div style='color:black;padding:10px'>" . $row['p_name'] . "</div>";
+                    echo "</div>";
+                    echo "</a>";
                 }
                 ?>
             </div>
@@ -172,20 +185,20 @@
 
 
         <div class="wrapper" style="text-align: right;">
-        <div class="fotter_slider"  style="padding-right:20px" >انواع بست</div>
+            <div class="fotter_slider" style="padding-right:20px">انواع بست</div>
 
             <div class="my-slider3" style="height: 300px;text-align:center">
                 <?php
-                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php" ;
-                $query  =$mysqli->query("SELECT * FROM products WHERE  tcat_id=11") ;
-                while ($row =mysqli_fetch_assoc($query)) {
+                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+                $query  = $mysqli->query("SELECT * FROM products WHERE  tcat_id=11");
+                while ($row = mysqli_fetch_assoc($query)) {
                     $p_name = str_replace(" ", "-", $row['p_name']);
-                    echo "<a  href='http://sky.test/product/".$row['p_id']."/".$p_name. "'>" ;
-                echo  "<div>"   ;  
-                echo  " <img   alt=''  src='/public/assets/uploaded_images/".$row['photo']."'>" ;
-                echo   "<div style='color:black;padding:10px'>" . $row['p_name']. "</div>"  ;
-                echo "</div>" ;
-                echo "</a>" ;
+                    echo "<a  href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
+                    echo  "<div>";
+                    echo  " <img   alt=''  src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                    echo   "<div style='color:black;padding:10px'>" . $row['p_name'] . "</div>";
+                    echo "</div>";
+                    echo "</a>";
                 }
                 ?>
             </div>
@@ -195,33 +208,36 @@
 
 
 
-        
+
         <br>
         <br>
         <br>
         <br>
         <div class="wrapper" style="text-align: right;">
-        <div class="fotter_slider"  style="padding-right:20px" >انواع اتصالات فلزی </div>
+            <div class="fotter_slider" style="padding-right:20px">انواع اتصالات فلزی </div>
 
             <div class="my-slider4" style="height: 300px;text-align:center">
                 <?php
-                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php" ;
-                $query  =$mysqli->query("SELECT * FROM products WHERE  tcat_id=12") ;
-                while ($row =mysqli_fetch_assoc($query)) {
+                include  "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+                $query  = $mysqli->query("SELECT * FROM products WHERE  tcat_id=12");
+                while ($row = mysqli_fetch_assoc($query)) {
                     $p_name = str_replace(" ", "-", $row['p_name']);
-                    echo "<a  href='http://sky.test/product/".$row['p_id']."/".$p_name. "'>" ;
-                echo  "<div>"   ;  
-                echo  " <img   alt=''  src='/public/assets/uploaded_images/".$row['photo']."'>" ;
-                echo   "<div style='color:black;padding:10px'>" . $row['p_name']. "</div>"  ;
-                echo "</div>" ;
-                echo "</a>" ;
+                    echo "<a  href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
+                    echo  "<div>";
+                    echo  " <img   alt=''  src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                    echo   "<div style='color:black;padding:10px'>" . $row['p_name'] . "</div>";
+                    echo "</div>";
+                    echo "</a>";
                 }
                 ?>
 
             </div>
 
         </div>
+        <button id="scrollBtn" onclick="scrollToTop()"><i class='bx bx-chevrons-up'></i></button>
+
     </div>
+
 
 
     <?php View::render("app/view/main/footer.php");
@@ -256,7 +272,7 @@
 
             $('.my-slider2').slick({
                 slidesToShow: 5,
-                slidesToScroll:3,
+                slidesToScroll: 3,
                 arrows: true,
                 dots: false,
                 speed: 300,
@@ -281,10 +297,10 @@
 
 
 
-            
+
             $('.my-slider3').slick({
                 slidesToShow: 5,
-                slidesToScroll:3,
+                slidesToScroll: 3,
                 arrows: true,
                 dots: false,
                 speed: 300,
@@ -307,8 +323,6 @@
             });
 
 
-
-            
             $('.my-slider4').slick({
                 slidesToShow: 5,
                 slidesToScroll: 3,
@@ -333,6 +347,30 @@
                 ]
             });
         });
+    </script>
+
+
+    <script>
+        window.onscroll = function() {
+            showScrollButton();
+        };
+
+        function showScrollButton() {
+            var scrollBtn = document.getElementById("scrollBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            // Smooth scroll to the top of the page
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     </script>
 </body>
 

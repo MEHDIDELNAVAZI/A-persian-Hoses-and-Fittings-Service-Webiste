@@ -54,7 +54,6 @@ class main extends controllers
                 }else {
                     echo  "error 4040 page not found ";
                 }
-                
             } else {
                 echo  "error 4040 page not found ";
             }

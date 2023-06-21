@@ -1,6 +1,5 @@
 <?php
 $currentURL = "http";
-
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $currentURL .= "s";
 }
@@ -169,7 +168,7 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
 
                 if ($_GET['page'] > 1) {
                     if (isset($_GET['s_f'])) {
-                        echo  "<a  href=" . $currentURL . "&?page=" . $_GET['page'] - 1 . ">&laquo;";
+                        echo  "<a  href=" . $currentURL . "&page=" . $_GET['page'] - 1 . ">&laquo;";
                         echo  "</a>";
                     } else {
                         echo  "<a  href=" . $currentURL . "/?page=" . $_GET['page'] - 1 . ">&laquo;";
@@ -234,7 +233,7 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                 }
                 if ($_GET['page'] < $pagination_number) {
                     if (isset($_GET['s_f'])) {
-                        echo  "<a  href=" . $currentURL . "&?page=" . $_GET['page'] + 1 . ">&raquo;";
+                        echo  "<a  href=" . $currentURL . "&page=" . $_GET['page'] + 1 . ">&raquo;";
                         echo  "</a>";
                     } else {
                         echo  "<a  href=" . $currentURL . "/?page=" . $_GET['page'] + 1 . ">&raquo;";

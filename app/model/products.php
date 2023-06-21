@@ -209,10 +209,12 @@ class products extends Model
   {
     $products = array();
     include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
-    $query  = $mysqli->query(("SELECT * FROM  products WHERE  p_name LIKE '%$search_for%'"));
-    while ($row = mysqli_fetch_assoc($query)) {
-      array_push($products, $row['p_id']);
-    }
+
+      $query3 = $mysqli->query(("SELECT p_id FROM  products WHERE  (p_name LIKE '%$search_for%' OR  tcat_name LIKE '%$search_for%' OR mcat_name LIKE '%$search_for%' OR ecat_name LIKE '%$search_for%')"));
+      while ($row3 = mysqli_fetch_assoc($query3)) {
+        array_push($products, $row3['p_id']);
+      }
+    
 
     return $products;
   }

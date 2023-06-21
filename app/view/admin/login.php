@@ -524,6 +524,7 @@ $_SESSION['captcha'] = $captcha_string;
 </head>
 
 <body>
+  
 
   <!-- form section start -->
   <section class="w3l-mockup-form">
