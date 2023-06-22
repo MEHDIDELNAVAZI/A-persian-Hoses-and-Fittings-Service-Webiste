@@ -10,9 +10,7 @@ class View {
     include $filename ;
     } 
     else {
-    echo "error 404 page not found " ;
+      View::render("app/view/main/404.php");
     }
  }
 }
-
-?>

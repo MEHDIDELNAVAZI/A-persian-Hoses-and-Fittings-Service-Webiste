@@ -26,7 +26,6 @@ class  Routing
       }
     }
 
-
     ##we have to analise the url and seperate  url to controller and action
     ## it means  at first the name of the controller  the classname and after that the action tht 
     ## should run due to the url action 
@@ -61,16 +60,18 @@ class  Routing
       }
     }
 
-    if (class_exists($controller)) {
+
+    if (class_exists($controller, true)) {
       $class_ins = new  $controller($this->params);
       $action = $this->mathod_maker($match['action']);
+
       if (method_exists($class_ins, $action)) {
         $class_ins->$action();
       } else {
-        echo "action not found";
+        View::render("app/view/main/404.php");
       }
     } else {
-      echo "controller not found ";
+      View::render("app/view/main/404.php");
     }
   }
 

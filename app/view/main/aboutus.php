@@ -1,5 +1,4 @@
 <?php
-define("ROOT", dirname(__DIR__));
 include  ROOT."/app/view/main/header.php";
 ?>
 <html lang="en">

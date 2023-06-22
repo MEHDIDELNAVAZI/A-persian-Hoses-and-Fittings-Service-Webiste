@@ -146,7 +146,7 @@
         <br>
         <br>
 
-        <div class="wrapper">
+        <div>
             <div class="my-slider" style="height: 400px;">
                 <div><img src="/public/assets/images/shilang/Rastinkar-fittings.jpg" alt=""></div>
             </div>

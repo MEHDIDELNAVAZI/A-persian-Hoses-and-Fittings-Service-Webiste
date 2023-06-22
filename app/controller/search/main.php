@@ -48,14 +48,14 @@ class main extends controllers
 
             if ($this->params[0] == "searchfor") {
                 $searchedprs = array();
-                if (isset ($_GET["s_f"])) {
+                if (isset($_GET["s_f"])) {
                     $searchedprs = $product->get_product_id_serached($_GET["s_f"]);
                     View::render("app/view/search/search.php", $searchedprs);
-                }else {
-                    echo  "error 4040 page not found ";
+                } else {
+                    View::render("app/view/main/404.php");
                 }
             } else {
-                echo  "error 4040 page not found ";
+                View::render("app/view/main/404.php");
             }
         }
     }
