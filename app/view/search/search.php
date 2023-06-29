@@ -15,8 +15,8 @@ if ($_SERVER['SERVER_PORT'] !== '80') {
 use App\Model\products;
 use Core\View;
 
-include  "/Applications/XAMPP/xamppfiles/htdocs/sky/app/view/main/header.php";
-include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+include  ROOT . "/app/view/main/header.php";
+include  ROOT . "/core/conf.php";
 ?>
 <html lang="en">
 
@@ -41,6 +41,7 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
             transition: all 0.5s;
             transform: translateY(-10px);
             cursor: pointer;
+
         }
 
         .a_pr:hover {
@@ -55,6 +56,11 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                 scale: 0.5;
             }
 
+            .a_pr img {
+            scale: 0.5  !important;
+            width: 100%;
+            
+        }
             /* CSS rules for mobile devices */
         }
 
@@ -66,6 +72,12 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
         /* Styles for laptops and desktops */
         @media (min-width: 1024px) {
             /* CSS rules for laptops and desktops */
+        }
+
+        .a_pr img {
+            scale: 0.7;
+            width: 100%;
+            
         }
     </style>
 
@@ -101,9 +113,9 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
             </span>
 
         <?php } ?>
-        <section class="  body-font" style="text-align:center;">
-            <div class="container px-5 py-24 mx-auto">
-                <div class="flex flex-wrap -m-4">
+        <section class="body-font" style="text-align:center;">
+            <div class="container px-10 py-24 mx-auto">
+                <div class="flex flex-wrap ">
 
                     <?php
                     $products_len = count($input);
@@ -241,8 +253,6 @@ include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                     }
                 }
             }
-
-
             echo '</div>';
 
             ?>

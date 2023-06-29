@@ -2,16 +2,12 @@
 
 use App\Model\products;
 use Core\View;
-
-
-define("ROOT", dirname(__DIR__));
-include  ROOT."/app/view/main/header.php";
+include  ROOT . "/app/view/main/header.php";
 
 $p_id = $input[0];
 $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
 ?>
 <html lang="en">
-
 
 <head>
     <meta charset="UTF-8">
@@ -38,8 +34,10 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
 
         }
 
+
         .geeks img {
             width: 100%;
+            scale: 0.6;
             transition: 0.5s all ease-in-out;
         }
 
@@ -52,9 +50,14 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
             height: 80px;
             overflow: hidden;
             border: solid red 1px;
-            padding: 5px;
             margin: 10px;
 
+        }
+
+        .geeks2 img {
+            scale: 0.7;
+            width: 100px;
+            height: 80px;
         }
 
         .p_name {
@@ -119,9 +122,10 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
         }
     </style>
 </head>
+
 <body>
     <?php
-    if (mysqli_num_rows($query) > 0 && $p_id!='') {
+    if (mysqli_num_rows($query) > 0 && $p_id != '') {
     ?>
 
         <div class="container mt-5" style="direction: rtl;text-align:right">
@@ -140,7 +144,7 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
             <div class="row" style="direction: rtl;text-align:right">
                 <div class="col-md-5">
                     <?php
-                    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+                    include  ROOT . "/core/conf.php";
 
                     $row = mysqli_fetch_assoc($query);
                     echo ' <div class="geeks">';
@@ -241,9 +245,9 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
 
         <?php
     } else {
-         echo ' <div class="container mt-5" style="direction: rtl;text-align:right">' ;
-         echo  " هیج محصولی یافت نشد!" ;
-         echo  "</div>" ;
+        echo ' <div class="container mt-5" style="direction: rtl;text-align:right">';
+        echo  " هیج محصولی یافت نشد!";
+        echo  "</div>";
     }
         ?>
         </div>

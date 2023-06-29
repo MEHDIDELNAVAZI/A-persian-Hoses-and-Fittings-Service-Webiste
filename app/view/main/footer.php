@@ -97,8 +97,8 @@
           <br>
           <br>
           <a href="#" style="font-size: 30px;padding:5px"><i class='bx bxl-instagram'></i></a>
-          <a href="#" style="font-size: 30px;padding:5px"><i class='bx bxl-telegram' ></i></a>
-          <a href="#" style="font-size: 30px;padding:5px"><i class='bx bxl-whatsapp' ></i></a>
+          <a href="#" style="font-size: 30px;padding:5px"><i class='bx bxl-telegram'></i></a>
+          <a href="#" style="font-size: 30px;padding:5px"><i class='bx bxl-whatsapp'></i></a>
 
         </div>
 

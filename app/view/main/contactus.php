@@ -1,6 +1,5 @@
 <?php
-define("ROOT", dirname(__DIR__));
-include  ROOT."/app/view/main/header.php";
+include  ROOT . "/app/view/main/header.php";
 ?>
 <html lang="en">
 
@@ -18,15 +17,99 @@ include  ROOT."/app/view/main/header.php";
             height: auto;
             padding: 10px;
         }
+
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            /* Adjust height as needed */
+        }
+
+        #loading-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        #map-iframe {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
     </style>
+
 </head>
 
 <body>
-    <div class="container">
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo molestias nisi dolorem vero laudantium aperiam, earum vitae. Fuga vitae facilis ab harum voluptas, veritatis rerum at cumque dolores soluta repellendus, placeat enim sit id obcaecati saepe in magni est ducimus nesciunt! Impedit, vel itaque temporibus quod dolor natus. Delectus quidem provident nostrum quaerat illum voluptatibus quibusdam blanditiis asperiores animi pariatur! Commodi accusamus quasi, tempora, excepturi architecto placeat repellendus ad ipsam consectetur natus assumenda impedit tempore itaque delectus molestiae laudantium. Totam doloremque atque at illum nesciunt aliquam, rem veritatis quae cupiditate reiciendis, dolorum accusamus, eligendi molestiae mollitia assumenda? Non, amet velit quisquam soluta dolor commodi tempora, iusto nostrum natus voluptas laboriosam fugit provident quis quia enim. Quae in ducimus pariatur aliquam tempora. Amet quam explicabo eaque quaerat reprehenderit architecto, exercitationem blanditiis fuga aspernatur, fugiat animi at. Tenetur nisi vel quas eum quaerat vero deleniti quidem illum dolorem nihil nobis laboriosam perspiciatis ex atque dolorum quae, vitae officia, obcaecati perferendis dolor itaque aut eligendi magnam! Quis, perferendis reiciendis temporibus illo beatae quos distinctio nostrum illum est, optio minus eaque suscipit exercitationem consequatur! Voluptatum totam veritatis ut eveniet mollitia minus amet in cumque, labore dolore aspernatur aperiam natus fugit ex ipsum at architecto qui odio tenetur aliquid quia ipsam facilis. Autem, omnis at esse tenetur rem error inventore voluptatibus fugit quasi sed repellat velit aspernatur molestias nostrum, doloremque natus ipsam officiis qui dignissimos, aliquid fugiat. Dicta minima animi repellat? Optio tempora a iusto eum tenetur voluptatibus non eveniet vero expedita nulla, quibusdam dolores rerum fugit repellat harum nisi placeat quasi minus laudantium inventore nihil illum natus quos? Suscipit ratione aliquid ipsam a, id rem minima inventore quam quae ea. Ipsam quos reiciendis vitae velit non nobis ullam! Aspernatur animi delectus, excepturi quisquam modi accusamus alias! Velit, labore. Iste dolorem rerum doloremque atque sit modi assumenda, eligendi quas nulla perspiciatis quasi temporibus animi quaerat qui corporis, reprehenderit itaque inventore fugit ut, quae consequatur exercitationem perferendis. Maiores quae, impedit ea numquam repellendus praesentium, fuga ipsum voluptatibus sed excepturi dolor porro doloremque quod? Quisquam, quia, velit iste laborum saepe amet vel commodi similique, vitae quis corporis iure tempore? Earum in est atque at, aliquid minus. Autem, asperiores? Quos vitae ea veritatis aut, earum explicabo perspiciatis fugit cumque iste corrupti consequuntur dolor mollitia itaque minus incidunt? Ipsum corrupti doloribus repellat ipsa aut quam provident cupiditate dolorem reprehenderit corporis, animi aperiam dolore temporibus recusandae iste qui facilis totam consequuntur. Explicabo asperiores voluptates hic dolore eum, earum sequi nihil ab, iusto voluptatibus ipsam mollitia, ratione perspiciatis error placeat alias sint necessitatibus dolor magnam? Rem, repellat. Quaerat saepe, eius accusantium provident molestiae laudantium eum impedit vitae eligendi ipsam nisi natus nostrum aut sequi, voluptas corporis pariatur quis possimus facere dignissimos dolores! Obcaecati fuga assumenda asperiores nam corporis deserunt cumque ea expedita, tenetur quibusdam officia! Eos porro odit provident perferendis assumenda corporis cupiditate cum? Veniam officiis accusantium rem suscipit, doloremque optio amet tempora quas debitis iure quaerat a quidem sint reprehenderit laudantium. Tempore, non! Sint eius voluptas tempora repudiandae ipsum dolorum ex suscipit odio quasi atque fugiat distinctio adipisci dolores, hic facilis optio dignissimos molestias consequuntur quam temporibus earum non. Dolor soluta possimus tempore quae hic illo nesciunt delectus enim consequuntur veritatis laborum, nam maxime, placeat, tempora labore rem necessitatibus alias at a officia quidem ullam quis. Iusto illum quaerat dignissimos reprehenderit. Laudantium veritatis possimus cumque. Culpa enim facere minus aperiam exercitationem odio natus neque ab, reprehenderit maxime rerum labore ducimus voluptate architecto consequatur fuga dolorem provident! Expedita, corrupti laudantium quia voluptates doloribus inventore ab minima non vitae facilis dicta soluta fuga quos repellendus molestiae labore, minus quam sint atque, delectus quaerat incidunt aperiam. Facere ut, doloribus dignissimos sequi similique fugiat veniam, sit, aliquam iure quae nihil architecto. Tempora cumque debitis inventore quam quas unde quae rerum? Omnis incidunt hic, ipsum minus fugiat nesciunt dolorum laborum voluptate tenetur odio dolore doloribus mollitia esse quos quasi molestias fugit nulla deleniti expedita ad laboriosam totam labore. Corporis laboriosam voluptatibus reiciendis beatae sapiente nulla alias facilis optio ratione, nobis rem voluptas doloremque tempore fugiat possimus vel a dolorem harum dignissimos deserunt? Maiores alias ipsum nemo at facilis quasi, sapiente quibusdam cum id ducimus officia aliquid et hic possimus accusantium porro? Soluta fugiat a unde autem velit quos neque iure rerum expedita maxime et temporibus labore quo, sapiente in repudiandae dolorum blanditiis! Eveniet sequi dolorem veritatis possimus sunt molestias quam totam, magni labore rem quo nemo nesciunt debitis facere, esse accusamus ipsam ut? Expedita blanditiis eos autem inventore similique! Fuga magni exercitationem aut modi cumque commodi at deserunt odit dolorem minima quas maiores ea incidunt nulla sit, et est, asperiores sed veritatis eos. Ipsam odio consectetur natus tempore, ullam beatae quod odit dolore vel mollitia dolorem modi voluptatum sapiente, distinctio blanditiis quidem provident excepturi quia, fugit dolores commodi quae magni ipsa. Aspernatur sed labore quos blanditiis odio aperiam animi provident accusantium, mollitia corporis vel vitae harum velit sunt voluptas dolores quod atque assumenda! Maxime, unde non dicta minima ad velit nesciunt, facere deleniti autem eligendi soluta accusamus error natus nam minus quam blanditiis magni. Praesentium, placeat repellendus cumque impedit tenetur suscipit deleniti odit. Impedit perferendis quia iure! Molestiae hic accusantium facilis est quia rem dolor earum quas ducimus! Magnam accusamus inventore quia possimus ab, repellat facilis quidem nisi minima voluptate assumenda, tenetur iusto libero ratione voluptates mollitia, voluptatum hic adipisci totam! Quia eos qui, hic ea expedita beatae aspernatur quas consequatur enim commodi tenetur veritatis consequuntur, nihil impedit rerum itaque facilis ratione quis vel perferendis, voluptatibus explicabo! Inventore officia sunt minus molestiae maxime dolore dignissimos quas ullam dolorum impedit nisi quis architecto, assumenda sint fuga earum, necessitatibus in, eius ad numquam nam possimus! Nesciunt adipisci beatae minus quod ab. Ullam totam at ratione magnam consequuntur in perspiciatis omnis commodi! Voluptate eius similique aperiam nulla atque quia animi praesentium veniam alias doloribus soluta sint non cum voluptas, dolores ipsa, in, at distinctio saepe dolorum hic necessitatibus temporibus consequatur qui. Similique autem vel aperiam ut, ea cum suscipit nobis eligendi quidem nihil libero voluptatum debitis quisquam pariatur!
+    <div class="container  mt-5" style="font-size: 20px;">
+
+        <div class="row  aboutus_row p-3 m-auto" style="text-align: center;">
+
+            <div class="col-md-4 ">
+                <span>اطلاعات بیشتر <i class='bx bxs-info-circle p-3'></i></span>
+                <div class="red_line"></div>
+                <br>
+                <span style="color: #7B7B7B;font-size:16px;padding:5px;">
+
+                    <span> +9892112282 <i class='bx bxl-whatsapp p-2' style="font-size: 20px;"></i></span>
+                    <br>
+                    <span> +9892112282 <i class='bx bxl-telegram p-2' style="font-size: 20px;"></i> </span>
+                    <br>
+                    <span> Delnavazi1029@gmail.com <i class='bx bx-envelope p-2' style="font-size: 20px;"></i> </span>
+                    <br></span>
+
+            </div>
+
+            <div class="col-md-4 ">
+                <span>شماره های تماس <i class='bx bx-phone-call p-3'></i></span>
+                <div class="red_line"></div>
+                <br>
+                <span style="color: #7B7B7B;font-size:16px;padding:5px;">
+
+                    <span> +9892112282 <i class='bx bx-phone p-2' style="float: rihgt;"></i> </span>
+                    <br>
+                    <span> +9892112282 <i class='bx bx-phone p-2'></i> </span>
+                    <br>
+                    <span> +9892112282 <i class='bx bx-phone p-2'></i> </span>
+                    <br></span>
+
+            </div>
+            <div class="col-md-4 ">
+                <span>آدرس شرکت<i class='bx bx-current-location p-3'></i></span>
+                <div class="red_line"></div>
+                <br>
+                <span style="color: #7B7B7B;font-size:16px;padding:5px;">تهران، خيابان اميركبير، خيابان ناظم الاطباء جنوبي، كوچه منصورالحكما، پلاك ١١</span>
+                <span></span>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div id="map-container">
+            <div id="loading-icon">
+                <i class="fas fa-spinner fa-spin"></i> Loading...
+            </div>
+            <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207347.52895735746!2d51.36245775406726!3d35.70641249999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03648746328d%3A0xab62ff4f855be56c!2z2YbZhdin24zZhtiv2q_bjCDZhdiv24zYsdin2YYg2K7ZiNiv2LHZiCDaqdivINu027Dbti0g2YfZhduM2KfYsSDZhdmI2KrZiNix!5e0!3m2!1sen!2snl!4v1688041047721!5m2!1sen!2snl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
 
-    <?php  include "/Applications/XAMPP/xamppfiles/htdocs/sky/app/view/main/footer.php"; ?>
+
+    <?php include "/Applications/XAMPP/xamppfiles/htdocs/sky/app/view/main/footer.php"; ?>
+    <script>
+        window.addEventListener("load", (event) => {
+            document.getElementById("loading-icon").style.display = "none";
+            document.getElementById("map-iframe").style.display = "block";
+        });
+    </script>
+
 </body>
 
 </html>

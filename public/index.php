@@ -12,6 +12,7 @@ function my_autoload($class_name)
    require  ROOT . DS . str_replace("\\", "/", $class_name) . ".php";
 }
 
+
 // Register the autoload function
 spl_autoload_register('my_autoload');
 $router  = new Core\Routing;

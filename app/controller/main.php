@@ -17,4 +17,3 @@ class main extends CoreControllers {
     CoreView::render("app/view/main/".$page.".php" ) ;
     }
 }
-?>

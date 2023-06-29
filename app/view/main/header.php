@@ -14,18 +14,26 @@
     <style>
         /* greek */
         @font-face {
-            font-family: 'Open Sans';
-            font-style: normal;
-            font-weight: 500;
-            src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
-            unicode-range: U+0370-03FF;
+            font-family: 'vaziri_bold';
+            /* Font family name */
+            src: url('/public/assets/fonts/vazir-font-v18.0.0/Vazir-Bold.ttf');
+            /* Path to your font file */
+            /* Add other properties if necessary */
+        }
+        @font-face {
+            font-family: 'vaziri_light';
+            /* Font family name */
+            src: url('/public/assets/fonts/vazir-font-v18.0.0/Vazir-Light.ttf');
+            /* Path to your font file */
+            /* Add other properties if necessary */
         }
 
         body {
             color: black;
-            font-family: 'Open Sans';
+            font-family: 'vaziri_light';
             font-style: normal;
             font-size: 16px;
+
         }
 
         ul {
@@ -33,8 +41,6 @@
             margin: 0;
             list-style: none;
         }
-
-
 
 
         header {
@@ -198,7 +204,6 @@
 
         .burger_menue a:hover {
             color: white;
-            background-color: gray;
             display: block;
             padding: 5px;
             text-decoration: none;
@@ -208,13 +213,13 @@
             list-style-type: none;
         }
 
-        ul.submenu {
-            display: none;
-            list-style-type: none;
-        }
 
         ul.menu li {
             cursor: pointer;
+        }
+
+        .sub-menu li ul {
+            display: none;
         }
 
         ul.menu li .submenu li {
@@ -226,30 +231,6 @@
             display: inline-block;
         }
 
-        .burger_menue_ul ul {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.5s linear;
-        }
-
-        .burger_menue_ul li {
-            transition: 1s;
-        }
-
-        .burger_menue_ul li:hover ul {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .burger_menue ul li {
-            display: block !important;
-        }
-
-
-
-        .burger_menue ul ul {
-            display: none;
-        }
 
 
         .nav2 {
@@ -375,25 +356,43 @@
             display: flex;
             justify-content: center;
         }
+
+        .burger_menue ul ul {
+            display: none;
+        }
+
+        .burger_menue ul ul ul {
+            display: none;
+        }
+
+        .red_line {
+            width: 100%;
+            color: #EE384E;
+            border: solid #EE384E 1px;
+        }
     </style>
 </head>
 
 <body>
+
 
     <div class="burger_menue">
         <div class="close_menue" style="color:red;cursor:pointer"><i class='bx bx-expand'></i></div>
         <ul class="menu  mt-4  p-2" style="direction: rtl;">
             <li><a href="http://sky.test">صفحه اصلی</a></li>
             <li>
-                <a href="#">محصولات</a>
-                <ul class="sub-menu">
+                <label for="mahsolat" style="cursor: pointer;" class="mahsolat_sherkat">محصولات</label>
+
+                <ul class="sub-menu2">
                     <?php
 
                     use App\Model\products;
 
-                    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+                    include   ROOT . "/core/" . "conf.php";
                     $query = $mysqli->query("SELECT * FROM top_cat ");
+
                     while ($row = mysqli_fetch_assoc($query)) {
+
                         $category = str_replace(" ", "-", $row['name']);
 
                         echo  "<li><a href=#>" . $row['name'] . "</a>";
@@ -443,7 +442,9 @@
     </div>
 
     <div class="container">
+
         <header>
+
             <div style="direction: rtl;">
                 <span class="logo">بهبودی هیدرولیک </span>
             </div>
@@ -458,9 +459,9 @@
                 <li><a href="http://sky.test">صفحه اصلی</a></li>
                 <li>
                     <a href="#">محصولات</a>
+
                     <ul class="sub-menu">
                         <?php
-
                         include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
                         $query = $mysqli->query("SELECT * FROM top_cat ");
                         while ($row = mysqli_fetch_assoc($query)) {
