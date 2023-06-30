@@ -1,5 +1,5 @@
 <?php
-include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+include  ROOT . "/core/conf.php";
 
 use Core\Model;
 

@@ -1,4 +1,7 @@
 <?php
+
+use Core\View;
+
 include  ROOT . "/app/view/main/header.php";
 ?>
 <html lang="en">
@@ -39,6 +42,24 @@ include  ROOT . "/app/view/main/header.php";
 
         #map-iframe {
             display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mapContainer {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        #loadingImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #map {
             width: 100%;
             height: 100%;
         }
@@ -95,18 +116,32 @@ include  ROOT . "/app/view/main/header.php";
 
         <div id="map-container">
             <div id="loading-icon">
-                <i class="fas fa-spinner fa-spin"></i> Loading...
+                <i class="fas fa-spinner fa-spin"></i> <img src="/public/assets/images/97952-loading-animation-blue.gif" alt="">
             </div>
-            <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207347.52895735746!2d51.36245775406726!3d35.70641249999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03648746328d%3A0xab62ff4f855be56c!2z2YbZhdin24zZhtiv2q_bjCDZhdiv24zYsdin2YYg2K7ZiNiv2LHZiCDaqdivINu027Dbti0g2YfZhduM2KfYsSDZhdmI2KrZiNix!5e0!3m2!1sen!2snl!4v1688041047721!5m2!1sen!2snl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div id="mapContainer">
+                <img id="loadingImage" src="loading.gif" alt="Loading...">
+                <div id="map">
+                    <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207347.52895735746!2d51.36245775406726!3d35.70641249999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03648746328d%3A0xab62ff4f855be56c!2z2YbZhdin24zZhtiv2q_bjCDZhdiv24zYsdin2YYg2K7ZiNiv2LHZiCDaqdivINu027Dbti0g2YfZhduM2KfYsSDZhdmI2KrZiNix!5e0!3m2!1sen!2snl!4v1688041047721!5m2!1sen!2snl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
         </div>
+        <br>
     </div>
 
 
-    <?php include "/Applications/XAMPP/xamppfiles/htdocs/sky/app/view/main/footer.php"; ?>
+
+    <?php View::render("app/view/main/footer.php");
+    ?>
+
     <script>
-        window.addEventListener("load", (event) => {
-            document.getElementById("loading-icon").style.display = "none";
-            document.getElementById("map-iframe").style.display = "block";
+        var mapFrame = document.getElementById('mapFrame');
+
+        // Show the loading image before the iframe is loaded
+        mapFrame.addEventListener('load', function() {
+            document.getElementById('loadingImage').style.display = 'none';
+            mapFrame.style.display = 'block';
         });
     </script>
 

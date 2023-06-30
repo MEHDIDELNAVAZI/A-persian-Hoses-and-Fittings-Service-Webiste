@@ -2,6 +2,7 @@
 
 use App\Model\products;
 use Core\View;
+
 include  ROOT . "/app/view/main/header.php";
 
 $p_id = $input[0];
@@ -26,7 +27,7 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
         }
 
         .geeks {
-            width: 350px;
+            width: 90%;
             height: auto;
             overflow: hidden;
             border: solid #DDDDDD 1px;
@@ -37,7 +38,7 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
 
         .geeks img {
             width: 100%;
-            scale: 0.6;
+            scale: 0.8;
             transition: 0.5s all ease-in-out;
         }
 

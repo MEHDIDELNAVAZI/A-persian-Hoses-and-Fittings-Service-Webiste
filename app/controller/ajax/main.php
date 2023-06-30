@@ -85,7 +85,7 @@ class main  extends controllers
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          $tcat_id = $_POST['tcat_id'];
-         include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+         include  ROOT . "/core/conf.php";
          $query  = $mysqli->query("SELECT * FROM mcat_name WHERE tcat_id='$tcat_id'");
          while ($row = mysqli_fetch_assoc($query)) {
             echo   "<option value= " . $row['midcat_id'] . ">"  . $row['mcat_name'] . "</option>";
@@ -101,7 +101,7 @@ class main  extends controllers
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          $mcat_id = $_POST['mcat_id'];
-         include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+         include  ROOT . "/core/conf.php";
          $query  = $mysqli->query("SELECT * FROM end_category WHERE mctat_id='$mcat_id'");
          if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_assoc($query)) {

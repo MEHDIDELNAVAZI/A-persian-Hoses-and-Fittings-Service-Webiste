@@ -152,7 +152,16 @@
         }
 
         .pr_slider img {
-            scale: 0.8;
+            scale: 0.9;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+        }
+        .my-slider img {
+        scale: 0.9;
         }
     </style>
 </head>
@@ -168,7 +177,12 @@
         <br>
         <br>
         <div class="my-slider" style="height: 400px;">
-            <div><img src="/public/assets/images/shilang/Rastinkar-fittings.jpg" alt=""></div>
+            <div  style="position: relative;"><img src="/public/assets/images/parts-g80e5dabbf_1280.jpg" alt="">
+                <span class="content" style="font-size:25px;"> اتصالات فلزی شیلنگ </span>
+            </div>
+            <div  style="position: relative;"><img src="/public/assets/images/bast/slider.png" alt="">
+                <span class="content" style="font-size:25px;color:white"> انواع بست </span>
+            </div>
         </div>
 
         <div>
@@ -209,19 +223,12 @@
                     </div>
 
                 </div>
-
-
-
-
-
             </div>
         </div>
 
         <br>
         <br>
         <br>
-
-
         <div class="wrapper" style="text-align: right;">
             <div class="fotter_slider" style="padding-right:20px">انواع شلنگ</div>
 
@@ -324,11 +331,11 @@
     <script>
         $(document).ready(function() {
             $('.my-slider').slick({
-                slidesToShow: 1,
+                slidesToShow:2,
                 slidesToScroll: 1,
                 arrows: true,
                 dots: true,
-                speed: 300,
+                speed: 600,
                 infinite: true,
                 autoplaySpeed: 5000,
                 autoplay: true,
@@ -353,7 +360,7 @@
                 slidesToScroll: 3,
                 arrows: true,
                 dots: false,
-                speed: 300,
+                speed: 600,
                 infinite: true,
                 autoplaySpeed: 5000,
                 autoplay: true,
@@ -381,7 +388,7 @@
                 slidesToScroll: 3,
                 arrows: true,
                 dots: false,
-                speed: 300,
+                speed: 600,
                 infinite: true,
                 autoplaySpeed: 4000,
                 autoplay: true,
@@ -406,7 +413,7 @@
                 slidesToScroll: 3,
                 arrows: true,
                 dots: false,
-                speed: 300,
+                speed: 600,
                 infinite: true,
                 autoplaySpeed: 3000,
                 autoplay: true,

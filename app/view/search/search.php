@@ -57,10 +57,11 @@ include  ROOT . "/core/conf.php";
             }
 
             .a_pr img {
-            scale: 0.5  !important;
-            width: 100%;
-            
-        }
+                scale: 0.5 !important;
+                width: 100%;
+
+            }
+
             /* CSS rules for mobile devices */
         }
 
@@ -77,7 +78,7 @@ include  ROOT . "/core/conf.php";
         .a_pr img {
             scale: 0.7;
             width: 100%;
-            
+
         }
     </style>
 
@@ -142,7 +143,7 @@ include  ROOT . "/core/conf.php";
                                 echo  "<a class='a_pr' href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
                                 echo "  <div class='lg:w-1/4 md:w-1/2 p-4 w-full  pr' style='border:solid #DDDDDD 1px'>
                                   <div class='block relative h-48 rounded overflow-hidden'>";
-                                echo  "<img alt='ecommerce' class='object-cover object-center w-full h-full block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                                echo  "<img alt='' class='object-cover object-center mb-5 block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
                                 echo " </div>
                             <div class='mt-4'>";
                                 echo " <p class='mt-1'>" . $row['p_name'] . "</p>";

@@ -9,7 +9,7 @@ class products extends Model
 {
   public function AddTopCategory($name)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("INSERT INTO top_cat (name) VALUES ('$name')");
     if ($query) {
       return true;
@@ -20,7 +20,7 @@ class products extends Model
 
   public function AddMidCategory($tcat_id, $mcat_name)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("INSERT INTO mcat_name (tcat_id,mcat_name) VALUES ('$tcat_id' ,'$mcat_name')");
     if ($query) {
       return true;
@@ -32,7 +32,7 @@ class products extends Model
 
   public function AddEndCategory($ecat_name, $tcat_id, $mcat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
 
     $query = $mysqli->query("INSERT INTO end_category (ecat_name,tcat_id,mctat_id) VALUES ('$ecat_name' ,'$tcat_id','$mcat_id')");
     if ($query) {
@@ -47,7 +47,7 @@ class products extends Model
   {
     if ($topcat != 0) {
       $products = array();
-      include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+      include  ROOT . "/core/conf.php";
       $query  = $mysqli->query(("SELECT * FROM  products WHERE  tcat_id = '$topcat' "));
       while ($row = mysqli_fetch_assoc($query)) {
         array_push($products, $row['p_id']);
@@ -58,7 +58,7 @@ class products extends Model
 
     if ($midcat != 0) {
       $products = array();
-      include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+      include  ROOT . "/core/conf.php";
       $query2  = $mysqli->query(("SELECT * FROM  products WHERE   mcat_id= '$midcat' "));
       while ($row2 = mysqli_fetch_assoc($query2)) {
         array_push($products, $row2['p_id']);
@@ -68,7 +68,7 @@ class products extends Model
 
     if ($endcat != 0) {
       $products = array();
-      include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+      include  ROOT . "/core/conf.php";
       $query3  = $mysqli->query(("SELECT * FROM  products WHERE  ecat_id = '$endcat' "));
       while ($row3 = mysqli_fetch_assoc($query3)) {
         array_push($products, $row3['p_id']);
@@ -80,7 +80,7 @@ class products extends Model
 
   public function makeproduct_url_mcat($mcat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM mcat_name WHERE midcat_id='$mcat_id'");
     $row = mysqli_fetch_assoc($query);
     $topcat_id  = $row['tcat_id'];
@@ -94,7 +94,7 @@ class products extends Model
 
   public function makeproduct_url_ecat_mcat($ecat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM end_category WHERE id='$ecat_id'");
     $row = mysqli_fetch_assoc($query);
     $midcat_id  = $row['mctat_id'];
@@ -109,7 +109,7 @@ class products extends Model
 
   public function makeproduct_url_ecat_tcat($ecat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM end_category WHERE id='$ecat_id'");
     $row = mysqli_fetch_assoc($query);
     $midcat_id  = $row['mctat_id'];
@@ -135,7 +135,7 @@ class products extends Model
 
   public function  get_dastebandi_mcat_id($mcat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM mcat_name WHERE midcat_id='$mcat_id'");
     $row = mysqli_fetch_assoc($query);
     $mcat_name =  $row['mcat_name'];
@@ -152,7 +152,7 @@ class products extends Model
 
   public function  get_dastebandi_ecat_id($ecat_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM end_category WHERE id='$ecat_id'");
     $row = mysqli_fetch_assoc($query);
     $ecat_name = $row['ecat_name'];
@@ -177,7 +177,7 @@ class products extends Model
 
   public function  get_dastebandi_mahsol($p_id)
   {
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
     $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
     $row = mysqli_fetch_assoc($query);
     $ecat_id = $row['ecat_id'];
@@ -208,13 +208,13 @@ class products extends Model
   public function get_product_id_serached($search_for)
   {
     $products = array();
-    include "/Applications/XAMPP/xamppfiles/htdocs/sky/core/conf.php";
+    include  ROOT . "/core/conf.php";
 
-      $query3 = $mysqli->query(("SELECT p_id FROM  products WHERE  (p_name LIKE '%$search_for%' OR  tcat_name LIKE '%$search_for%' OR mcat_name LIKE '%$search_for%' OR ecat_name LIKE '%$search_for%')"));
-      while ($row3 = mysqli_fetch_assoc($query3)) {
-        array_push($products, $row3['p_id']);
-      }
-    
+    $query3 = $mysqli->query(("SELECT p_id FROM  products WHERE  (p_name LIKE '%$search_for%' OR  tcat_name LIKE '%$search_for%' OR mcat_name LIKE '%$search_for%' OR ecat_name LIKE '%$search_for%')"));
+    while ($row3 = mysqli_fetch_assoc($query3)) {
+      array_push($products, $row3['p_id']);
+    }
+
 
     return $products;
   }
