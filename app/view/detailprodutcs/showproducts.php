@@ -16,7 +16,7 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-    <title>Document</title>
+    <title>show products</title>
     <style>
         .footer {
             background-color: #222222 !important;
@@ -26,13 +26,13 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
             padding: 10px;
         }
 
+
         .geeks {
             width: 90%;
             height: auto;
             overflow: hidden;
             border: solid #DDDDDD 1px;
             margin: 10px;
-
         }
 
 
@@ -148,6 +148,7 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
                     include  ROOT . "/core/conf.php";
 
                     $row = mysqli_fetch_assoc($query);
+                    $topcatid = $row['tcat_id'];
                     echo ' <div class="geeks">';
                     echo  "<img  src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
                     echo  '</div>';
@@ -205,9 +206,6 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
                                 echo  "<span style='color:gray;padding:10px'>";
                                 echo $row['content'];
                                 echo "</span>";
-
-
-
                                 echo "</div>";
                             }
                             ?>
@@ -234,15 +232,14 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
                             </div>
                         </div>
 
-
                     </div>
-
 
                 </div>
 
-
-
             </div>
+
+            <br><br>
+
 
         <?php
     } else {
@@ -250,7 +247,42 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
         echo  " هیج محصولی یافت نشد!";
         echo  "</div>";
     }
+
         ?>
+        </div>
+        <div class="wrapper container" style="text-align: right;">
+            <div class="fotter_slider" style="padding-right:20px;position:relative">محصولات مشابه
+                <div class="slide_prev_1  arrow"><i class='bx bx-chevrons-left'></i></div>
+                <div class="slide_next_1  arrow"><i class='bx bx-chevrons-right'></i></div>
+            </div>
+
+            <div class="my-slider2 slider-one" style="height: 300px;text-align:center">
+                <?php
+                function shortenString($inputString)
+                {
+                    mb_internal_encoding("UTF-8");
+                    if (mb_strlen($inputString) > 30) {
+                        return "...." . mb_substr($inputString, 0, 25);
+                    }
+                    return $inputString;
+                }
+
+                include  ROOT . "/core/conf.php";
+                $query  = $mysqli->query("SELECT * FROM products WHERE  tcat_id=$topcatid");
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $p_name = str_replace(" ", "-", $row['p_name']);
+                    echo "<a  href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
+                    echo  "<div class='pr_slider'>";
+                    echo  " <img   alt=''  src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                    echo   "<div style='color:black;padding:10px'>" . shortenString($row['p_name']) . "</div>";
+                    echo "<div class='moreinfo'>";
+                    echo "اطلاعات بیشتر";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</a>";
+                }
+                ?>
+            </div>
         </div>
         <?php
         View::render("app/view/main/footer.php");
@@ -262,18 +294,13 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
             document.getElementById('button1').style.backgroundColor = "#EE384E";
             document.getElementById('button1').style.color = "white";
 
-
-
             function showDiv1() {
                 document.getElementById('div1').style.display = 'block';
                 document.getElementById('div2').style.display = 'none';
                 document.getElementById('button1').style.backgroundColor = "#EE384E";
                 document.getElementById('button1').style.color = "white";
                 document.getElementById('button2').style.color = "black";
-
                 document.getElementById('button2').style.backgroundColor = "white";
-
-
             }
 
             function showDiv2() {
@@ -281,10 +308,47 @@ $query = $mysqli->query("SELECT * FROM products WHERE p_id='$p_id'");
                 document.getElementById('button1').style.backgroundColor = "white";
                 document.getElementById('button2').style.color = "white";
                 document.getElementById('button1').style.color = "black";
-
                 document.getElementById('div1').style.display = 'none';
                 document.getElementById('div2').style.display = 'block';
             }
+        </script>
+
+
+        <script>
+            $('.my-slider2').slick({
+                slidesToShow: 5,
+                slidesToScroll: 3,
+                arrows: false,
+                dots: false,
+                speed: 600,
+                infinite: true,
+                autoplaySpeed: 5000,
+                autoplay: false,
+                responsive: [{
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 2,
+                        }
+                    }
+                ]
+            });
+        </script>
+
+        <script>
+            $('.slide_prev_1').click(function(e) {
+                //e.preventDefault(); 
+                $('.slider-one').slick('slickPrev');
+            });
+            $('.slide_next_1').click(function(e) {
+                //e.preventDefault(); 
+                $('.slider-one').slick('slickNext');
+            });
         </script>
 </body>
 

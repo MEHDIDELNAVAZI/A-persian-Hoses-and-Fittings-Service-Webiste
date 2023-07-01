@@ -78,10 +78,8 @@ include  ROOT . "/core/conf.php";
         .a_pr img {
             scale: 0.7;
             width: 100%;
-
         }
     </style>
-
 </head>
 
 <body>
@@ -114,10 +112,9 @@ include  ROOT . "/core/conf.php";
             </span>
 
         <?php } ?>
-        <section class="body-font" style="text-align:center;">
+        <section class="body-font" style="text-align:center">
             <div class="container px-10 py-24 mx-auto">
                 <div class="flex flex-wrap ">
-
                     <?php
                     $products_len = count($input);
                     $pagination_number = ceil($products_len / 8);
@@ -143,7 +140,7 @@ include  ROOT . "/core/conf.php";
                                 echo  "<a class='a_pr' href='http://sky.test/product/" . $row['p_id'] . "/" . $p_name . "'>";
                                 echo "  <div class='lg:w-1/4 md:w-1/2 p-4 w-full  pr' style='border:solid #DDDDDD 1px'>
                                   <div class='block relative h-48 rounded overflow-hidden'>";
-                                echo  "<img alt='' class='object-cover object-center mb-5 block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
+                                echo  "<img alt='' style='height:100%;width:100%' class='object-cover object-center  block' src='/public/assets/uploaded_images/" . $row['photo'] . "'>";
                                 echo " </div>
                             <div class='mt-4'>";
                                 echo " <p class='mt-1'>" . $row['p_name'] . "</p>";

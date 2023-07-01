@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="/public/assets/slick-1.8.1/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="/public/assets/slick-1.8.1/slick/slick-theme.css" />
 
     <style>
         /* greek */
@@ -20,6 +19,7 @@
             /* Path to your font file */
             /* Add other properties if necessary */
         }
+
         @font-face {
             font-family: 'vaziri_light';
             /* Font family name */
@@ -370,6 +370,168 @@
             color: #EE384E;
             border: solid #EE384E 1px;
         }
+
+
+
+        .moreinfo {
+            width: 150px;
+            height: 40px;
+            color: gray;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            margin: auto;
+            opacity: 0.9;
+            border: solid #DDDDDD 1px;
+        }
+
+        .moreinfo:hover {
+            background-color: #EE384E;
+            color: black;
+        }
+
+        .pr_slider img {
+            scale: 0.9;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+        }
+
+        .my-slider img {
+            scale: 0.9;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 0px;
+            width: 30px;
+            height: 30px;
+            border: solid #DDDDDD 1px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 30px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .slide_next_2 {
+            top: 0;
+            left: 60px;
+        }
+
+        .slide_prev_2 {
+            top: 0;
+            margin-left: 5px;
+        }
+
+        .slide_next_1 {
+            top: 0;
+            left: 60px;
+        }
+
+        .slide_prev_1 {
+            top: 0;
+            margin-left: 5px;
+        }
+
+        .slide_next_3 {
+            top: 0;
+            left: 60px;
+        }
+
+        .slide_prev_3 {
+            top: 0;
+            margin-left: 5px;
+        }
+
+        .wrapper {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .wrapper a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+
+        .my-slider img {
+            width: 100%;
+            height: 100%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .my-slider2 img {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+
+        .my-slider3 img {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+
+        .my-slider4 img {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+
+
+        .my-slider img:hover {
+            transform: scale(1.1);
+        }
+
+
+        .my-slider2 img:hover {
+            transform: scale(1.1);
+        }
+
+        .my-slider3 img:hover {
+            transform: scale(1.1);
+        }
+
+        .my-slider4 img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            background-color: #222222 !important;
+            margin-top: 100px;
+            color: white;
+            height: auto;
+            padding: 10px;
+        }
+
+        .fotter_slider {
+            width: 100%;
+            height: 40px;
+            color: white;
+            font-size: 18px;
+            line-height: 40px;
+            background-color: #333;
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -609,7 +771,6 @@
 
         $(".burger_menue ul ul li ").click(function() {
             $(this).find(">ul").css("display", "block");
-            console.log($(this).find(">ul"));
         })
     </script>
 

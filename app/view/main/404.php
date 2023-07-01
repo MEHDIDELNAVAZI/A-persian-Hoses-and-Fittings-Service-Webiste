@@ -9,22 +9,23 @@ include  ROOT . "/app/view/main/header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERROR 404</title>
     <style>
-         .footer {
+        .footer {
             background-color: #222222 !important;
             color: white;
             height: auto;
             padding: 10px;
             margin-top: 50px;
         }
-        .content{
-        color: black;
-        font-size: 50px;
+
+        .content2 {
+            color: black;
+            font-size: 50px;
         }
     </style>
 </head>
 
 <body>
-    <div class="content container">Error 404 Page not found</div>
+    <div class="content2 container">Error 404 Page not found</div>
     <?php
     include  ROOT . "/app/view/main/footer.php";
     ?>
